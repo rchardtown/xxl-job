@@ -1,0 +1,30 @@
+
+# web port
+server.port=8088
+# no web
+#spring.main.web-environment=false
+
+# log config
+logging.config=classpath:logback.xml
+
+
+### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+#admin 模块要和执行器进行通信，配置admin [调度中心的地址]给执行器
+xxl.job.admin.addresses=http://127.0.0.1:9876/xxl-job-admin
+
+### xxl-job, access token
+### 执行器核调度中心之间的安全协议配置，可不配
+xxl.job.accessToken=
+
+### xxl-job executor appname 执行器的名称，用来给执行器分组
+xxl.job.executor.appname=xxl-job-executor-sample
+### xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null
+xxl.job.executor.address=
+### xxl-job executor server-info，可以不配，当执行器的服务器有虚拟网卡或双网卡时配置
+xxl.job.executor.ip=
+### rpc 模块的端口,也即执行策略选择，比如轮询时的选择节点
+xxl.job.executor.port=9992
+### xxl-job executor log-path,日志存储目录
+xxl.job.executor.logpath=D:\\code\\xxl-job-logDir
+### xxl-job executor log-retention-days，日志清理周期
+xxl.job.executor.logretentiondays=30

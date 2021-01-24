@@ -1,0 +1,74 @@
+management:
+  health:
+    mail:
+      enabled: false
+  server:
+    servlet:
+      context-path: /actuator
+mybatis:
+  mapper-locations: classpath:/mybatis-mapper/*Mapper.xml
+server:
+  port: 9876
+  servlet:
+    context-path: /xxl-job-admin
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      auto-commit: true
+      connection-test-query: SELECT 1
+      connection-timeout: 10000
+      idle-timeout: 30000
+      max-lifetime: 900000
+      maximum-pool-size: 30
+      minimum-idle: 10
+      pool-name: HikariCP
+      validation-timeout: 1000
+    ####  XXL-JOB 调度中心的数据源地址，必须修改成自己准备提供给 XXL-JOB 的数据库地址。
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/xxl_job?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+  freemarker:
+    charset: UTF-8
+    request-context-attribute: request
+    settings:
+      number_format: 0.##########
+    suffix: .ftl
+    templateLoaderPath: classpath:/templates/
+#### email：报警邮箱
+  mail:
+    from: 18392642013@163.com
+    host: smtp.163.com
+    ## IMAP/SMTP服务 授权码
+    password: GSOZNVFHGWFDEBLN
+    port: 25
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp
+    username: 18392642013@163.com
+  mvc:
+    servlet:
+      load-on-startup: 0
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+xxl:
+  job:
+    #### 调度中心通讯令牌，建议填写。虽然说，内网一般很安全，但是以防万一，并且又没啥成本，直接给整上。
+    accessToken: ''
+    admin:
+      rpc:
+        port: 7081
+    i18n: zh_CN
+    logretentiondays: 30
+    triggerpool:
+      fast:
+        max: 200
+      slow:
+        max: 100
